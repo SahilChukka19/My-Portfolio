@@ -24,6 +24,7 @@ const Navbar = () => {
                     const id = tab.href === "#" ? "home" : tab.href.substring(1);
                     return {
                         id: tab.label,
+                        href: tab.href,
                         element: document.getElementById(id)
                     };
                 })
@@ -38,6 +39,12 @@ const Navbar = () => {
 
             if (currentSection) {
                 setActiveTab(currentSection.id);
+
+                // Update URL hash without jumping
+                const newHash = currentSection.href === "#" ? "#home" : currentSection.href;
+                if (window.location.hash !== newHash && !window.location.hash.includes("?")) {
+                    window.history.replaceState(null, null, newHash);
+                }
             }
         };
 
