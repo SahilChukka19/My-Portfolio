@@ -1,4 +1,4 @@
-# 🏎️ High-Fidelity F1 Engineering Portfolio
+# 🏎️ My Portfolio
 
 [![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62e)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
@@ -67,15 +67,21 @@ npm run dev
 ## 📂 Project Structure
 
 ```text
-src/
+├── public/
+└── src/
 ├── components/
-│   ├── Hero.jsx            # Dynamic telemetry header
-│   ├── Projects.jsx        # Dashboard-first case study engine
-│   ├── TechLab.jsx         # Gamified skills inventory
-│   ├── Experience.jsx      # Interactive timeline
-│   └── Accomplishments.jsx # Staggered podium system
-├── App.jsx                 # App shell and scroll orchestration
-└── index.css               # Design tokens and utility globals
+│ ├── About.jsx
+│ ├── Accomplishments.jsx
+│ ├── Contact.jsx
+│ ├── Experience.jsx
+│ ├── Footer.jsx
+│ ├── Hero.jsx
+│ ├── Navbar.jsx
+│ ├── Projects.jsx
+│ └── TechLab.jsx
+├── App.jsx
+├── index.css
+└── main.jsx
 ```
 
 ---
