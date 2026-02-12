@@ -38,8 +38,9 @@ const About = () => {
         {
             id: 2,
             q: "What's your preferred tech stack?",
-            a: "I enjoy the MERN stack for its versatility, but I'm also deeply interested in Python for AI/ML workflows. I choose the right tool for the track."
+            a: "My core focus is on Python for data science and machine learning, using tools like PyTorch, scikit-learn, and FastAPI for building intelligent systems. For the frontend, I work with React and TypeScript to create responsive interfaces. I generally choose the stack based on whether the problem is more data-driven, AI-centric, or product-focused."
         },
+
         {
             id: 3,
             q: "How do you handle pressure?",
@@ -49,7 +50,6 @@ const About = () => {
 
     return (
         <section id="about" className="min-h-screen pt-10 pb-20 px-6 max-w-7xl mx-auto flex flex-col justify-center relative">
-            {/* Section Header */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -66,7 +66,6 @@ const About = () => {
             </motion.div>
 
             <div className="grid md:grid-cols-12 gap-8 items-start">
-                {/* --- DRIVER CARD (Left) --- */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -74,10 +73,8 @@ const About = () => {
                     className="md:col-span-4"
                 >
                     <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm relative overflow-hidden group flex flex-col">
-                        {/* Holographic Border Effect */}
                         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-transparent to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                        {/* Profile Image */}
                         <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-slate-800 mb-6 border-2 border-slate-700 group-hover:border-cyan-500/50 transition-colors">
                             <img
                                 src="/me.jpg"
@@ -85,17 +82,14 @@ const About = () => {
                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                             />
 
-                            {/* Overlay Gradient */}
                             <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
 
-                            {/* Name Overlay */}
                             <div className="absolute bottom-4 left-4">
                                 <h3 className="text-3xl font-black text-white italic uppercase leading-none">Sahil</h3>
                                 <h3 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-emerald-500 italic uppercase leading-none">Chukka</h3>
                             </div>
                         </div>
 
-                        {/* Quick Stats */}
                         <div className="grid grid-cols-2 gap-4">
                             {STATS.map((stat, i) => (
                                 <div key={i} className="bg-slate-950/50 p-3 rounded-lg border border-slate-800/50">
@@ -107,9 +101,7 @@ const About = () => {
                     </div>
                 </motion.div>
 
-                {/* --- TELEMETRY DATA (Right) --- */}
                 <div className="md:col-span-8 flex flex-col gap-8">
-                    {/* Education / Season History */}
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -135,7 +127,6 @@ const About = () => {
                         </div>
                     </motion.div>
 
-                    {/* Lower Grid: Hobbies/Music & FAQ/Focus */}
                     <div className="grid md:grid-cols-2 gap-8 items-start">
                         {/* Hobbies / Music Column */}
                         <div className="flex flex-col gap-8">
@@ -216,7 +207,6 @@ const About = () => {
                             </motion.a>
                         </div>
 
-                        {/* FAQ / Focus Column */}
                         <div className="flex flex-col gap-8">
                             {/* Press Conference / FAQ */}
                             <motion.div

@@ -5,7 +5,6 @@ import {
 } from "lucide-react";
 
 const Hero = () => {
-    // Including "all the icons" in the new background style
     const HOBBY_ICONS = [
         { icon: Headphones, position: "top-[15%] left-[10%]", rotate: -15, delay: 0, size: "w-16 h-16" },
         { icon: Laptop, position: "bottom-[15%] left-[8%]", rotate: 12, delay: 1, size: "w-24 h-24" },
@@ -66,7 +65,6 @@ const Hero = () => {
                 </motion.div>
             </div>
 
-            {/* Background Decorative Icons Distributed - All Icons in Ambient Style */}
             {HOBBY_ICONS.map((item, index) => (
                 <motion.div
                     key={index}

@@ -5,12 +5,12 @@ import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const form = useRef();
-    const [status, setStatus] = useState('idle'); // idle, loading, success, error
+    const [status, setStatus] = useState('idle'); 
 
     const sendEmail = (e) => {
         e.preventDefault();
 
-        // Basic Security/Validation
+       
         if (!form.current.user_name.value || !form.current.user_email.value || !form.current.message.value) {
             alert("Please fill in all required fields.");
             return;
@@ -37,7 +37,6 @@ const Contact = () => {
     };
     return (
         <section id="contact" className="min-h-screen py-20 px-6 max-w-7xl mx-auto flex flex-col justify-center relative">
-            {/* Background Accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/5 blur-[120px] rounded-full -z-10" />
 
             {/* Section Header */}
@@ -60,7 +59,6 @@ const Contact = () => {
             </motion.div>
 
             <div className="grid lg:grid-cols-12 gap-12">
-                {/* --- INFO PANEL (Left) --- */}
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}

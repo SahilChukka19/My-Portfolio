@@ -6,7 +6,6 @@ import {
     Sparkles, RefreshCw, FlaskConical, Workflow, Bot, Users, Brain, Hexagon, Code2, Wifi, Mail
 } from "lucide-react";
 
-// --- DATA: SKILLS & RECIPES ---
 const SKILLS = [
     { id: "python", name: "Python", icon: Code, color: "text-yellow-400" },
     { id: "typescript", name: "TypeScript", icon: Box, color: "text-blue-500" },
@@ -58,10 +57,8 @@ const RECIPES = {
     "javascript+postman": { title: "Newman Automation", desc: "CI/CD integration for API test suites.", color: "from-yellow-300 to-orange-500" },
     "postman+rest": { title: "API Specialist", desc: "Designing & documenting robust interfaces.", color: "from-indigo-400 to-orange-500" },
 };
-// Sort helper for recipe keys
 const getMixKey = (id1, id2) => [id1, id2].sort().join("+");
 
-// Generic Combo Generator
 const generateGenericCombo = (skill1, skill2) => {
     return {
         title: "Integrated Stack",
@@ -77,7 +74,6 @@ const TechLab = () => {
     const [result, setResult] = useState(null);
     const [isCrafting, setIsCrafting] = useState(false);
 
-    // Check for combination when slots change
     useEffect(() => {
         if (slot1 && slot2) {
             const key = getMixKey(slot1.id, slot2.id);
@@ -85,7 +81,6 @@ const TechLab = () => {
 
             setIsCrafting(true);
 
-            // Crafted successfully
             setTimeout(() => {
                 setResult(recipe);
                 setIsCrafting(false);
@@ -94,7 +89,7 @@ const TechLab = () => {
     }, [slot1, slot2]);
 
     const handleSelect = (skill) => {
-        if (result) handleReset(); // Reset if showing a result
+        if (result) handleReset(); 
         if (!slot1) setSlot1(skill);
         else if (!slot2) setSlot2(skill);
     };
@@ -108,7 +103,6 @@ const TechLab = () => {
 
     return (
         <section id="skills" className="min-h-screen bg-slate-950 py-20 px-6 relative overflow-hidden flex flex-col justify-center">
-            {/* Decorative Background Elements */}
             <div className="absolute top-20 left-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
 

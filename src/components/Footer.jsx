@@ -8,11 +8,9 @@ const Footer = () => {
 
     return (
         <footer className="relative bg-slate-950 border-t border-slate-900 py-12 px-6 overflow-hidden">
-            {/* Subtle Gradient background */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
 
             <div className="max-w-7xl mx-auto flex flex-col items-center gap-8">
-                {/* Brand / Logo */}
                 <div className="flex flex-col items-center">
                     <h2 className="text-2xl font-black text-white italic tracking-tighter uppercase">
                         Sahil <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-emerald-500">Chukka</span>
@@ -40,7 +38,6 @@ const Footer = () => {
                     ))}
                 </div>
 
-                {/* Navigation Links (Quick Access) */}
                 <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-mono uppercase tracking-widest text-slate-500">
                     {['About', 'Experience', 'Skills', 'Projects'].map((item) => (
                         <a
@@ -68,7 +65,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            {/* Visual Decoration */}
+            
             <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-cyan-500/5 blur-[80px] rounded-full pointer-events-none" />
             <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-emerald-500/5 blur-[80px] rounded-full pointer-events-none" />
         </footer>

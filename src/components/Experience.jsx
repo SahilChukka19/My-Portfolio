@@ -112,9 +112,6 @@ const Experience = () => {
                         </div>
                     </motion.div>
 
-                    {/* The "Car" (Progress Indicator) */}
-                    {/* It stays in view but moves along the line visuals? 
-                        Actually, moving the car along the screen width feels good. */}
                     <motion.div
                         className="absolute top-1/2 -translate-y-[90%] z-50 max-w-none w-32 drop-shadow-[0_0_20px_rgba(239,68,68,0.8)] mix-blend-screen bg-transparent"
                         style={{ left: carX, x: "-50%" }}

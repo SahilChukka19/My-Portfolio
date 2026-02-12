@@ -30,7 +30,7 @@ const Navbar = () => {
                 })
                 .filter(section => section.element);
 
-            const scrollPosition = window.scrollY + 100; // Offset for navbar height
+            const scrollPosition = window.scrollY + 100; 
 
             const currentSection = sections.find(section => {
                 const { offsetTop, offsetHeight } = section.element;
@@ -40,7 +40,6 @@ const Navbar = () => {
             if (currentSection) {
                 setActiveTab(currentSection.id);
 
-                // Update URL hash without jumping
                 const newHash = currentSection.href === "#" ? "#home" : currentSection.href;
                 if (window.location.hash !== newHash && !window.location.hash.includes("?")) {
                     window.history.replaceState(null, null, newHash);
@@ -49,7 +48,6 @@ const Navbar = () => {
         };
 
         window.addEventListener("scroll", handleScroll);
-        // Initial check
         handleScroll();
 
         return () => window.removeEventListener("scroll", handleScroll);
