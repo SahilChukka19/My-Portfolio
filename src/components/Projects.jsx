@@ -20,7 +20,8 @@ const PROJECTS = [
             architecture: {
                 frontend: ["React + TypeScript PWA", "Offline storage using IndexedDB", "Multi-step validation forms", "GPS-based location tagging"],
                 backend: ["FastAPI REST APIs", "SQLAlchemy ORM", "Microsoft SSO Authentication", "Automated PDF Report Engine"],
-                ml: ["Crack detection inference API", "Base64 image processing", "Severity overlay on images"]
+                ml: ["Crack detection inference API", "Base64 image processing", "Severity overlay on images"],
+                rag: ["RAG based chatbot for inspection guidance and troubleshooting", "Contextual retrieval from inspection manuals and historical data","LLM-based response generation for field support"]
             },
             approach: [
                 "Built a robust bi-directional sync engine using IndexedDB to track local changes and resolve conflicts using timestamps.",
@@ -70,10 +71,6 @@ const PROJECTS = [
                     "SQL-based data consolidation",
                     "Data cleaning and transformation pipeline",
                     "KPI calculation and modeling layer"
-                ],
-                ml: [
-                    "Trend analysis for performance metrics",
-                    "Statistical aggregation for KPI scoring"
                 ]
             },
             approach: [
@@ -129,10 +126,6 @@ const PROJECTS = [
                     "SQL-based data modeling and validation",
                     "Data transformation and cleaning pipeline"
                 ],
-                ml: [
-                    "Statistical analysis for condition scoring",
-                    "Geospatial visualization of road segments"
-                ]
             },
             approach: [
                 "Cleaned and transformed raw NSV field data into a structured analytics dataset.",
@@ -189,7 +182,7 @@ const PROJECTS = [
                     "CAD query processing engine",
                     "Secure file upload and validation pipeline"
                 ],
-                ml: [
+                agentic_ai: [
                     "Image-based dimension extraction agent",
                     "Base64 image preprocessing",
                     "Structured JSON output for CAD generation"
@@ -309,7 +302,7 @@ const PROJECTS = [
                     "RAG orchestration pipeline",
                     "Secure AWS deployment"
                 ],
-                ml: [
+                gen_ai: [
                     "OpenAI embedding model for vector generation",
                     "ChromaDB vector database",
                     "Semantic search and similarity matching",
@@ -515,7 +508,7 @@ const PROJECTS = [
             "Responsive, mobile-first technical layout"
         ],
         challenges: "Orchestrating complex shared-element transitions between grid and detail views while managing scroll state and data persistence across the modal lifecycle.",
-        links: { code: "#" },
+        links: { code: "https://github.com/SahilChukka19/My-Portfolio"},
         images: [
             "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800",
             "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
