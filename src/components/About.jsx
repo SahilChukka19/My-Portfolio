@@ -38,9 +38,8 @@ const About = () => {
         {
             id: 2,
             q: "What's your preferred tech stack?",
-            a: "My core focus is on Python for data science and machine learning, using tools like PyTorch, scikit-learn, and FastAPI for building intelligent systems. For the frontend, I work with React and TypeScript to create responsive interfaces. I generally choose the stack based on whether the problem is more data-driven, AI-centric, or product-focused."
+            a: "My core focus is entirely driven by Python, specializing in data science and machine learning. I rely heavily on frameworks like PyTorch and scikit-learn for building intelligent predictive models, and use FastAPI or Flask to architect robust backend systems and deploy ML pipelines. I choose my tools specifically to optimize for data processing, model accuracy, and scalable AI-centric solutions."
         },
-
         {
             id: 3,
             q: "How do you handle pressure?",
