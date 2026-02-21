@@ -385,7 +385,7 @@ const PROJECTS = [
             "Web interface for medical uploads"
         ],
         challenges: "Training models on imbalanced medical datasets without losing sensitivity to rare pathological features.",
-        links: { code: "#" },
+        links: { code: "https://github.com/SahilChukka19/Detection-of-Choroidal-Neovasculariation-Using-Deep-Learning-Models" },
         images: ["https://images.unsplash.com/photo-1576091160550-2173bdb999ef?auto=format&fit=crop&q=80&w=800", "https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?auto=format&fit=crop&q=80&w=800"],
         color: "from-emerald-400 to-teal-500"
     },
@@ -442,7 +442,7 @@ const PROJECTS = [
             "Real-time model inference"
         ],
         challenges: "Designing an intent classification model that generalizes well across varied user inputs while maintaining real-time inference performance.",
-        links: { code: "#" },
+        links: { code: "https://github.com/SahilChukka19/jaadu" },
         images: [
             "https://images.unsplash.com/photo-1581090700227-4c4f50d47c4c?auto=format&fit=crop&q=80&w=800",
             "https://images.unsplash.com/photo-1587614382346-4ec70e388b28?auto=format&fit=crop&q=80&w=800"
