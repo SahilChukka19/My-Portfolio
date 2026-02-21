@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     Globe, Cpu, BarChart3, ExternalLink, Github, Code2,
@@ -21,7 +21,7 @@ const PROJECTS = [
                 frontend: ["React + TypeScript PWA", "Offline storage using IndexedDB", "Multi-step validation forms", "GPS-based location tagging"],
                 backend: ["FastAPI REST APIs", "SQLAlchemy ORM", "Microsoft SSO Authentication", "Automated PDF Report Engine"],
                 ml: ["Crack detection inference API", "Base64 image processing", "Severity overlay on images"],
-                rag: ["RAG based chatbot for inspection guidance and troubleshooting", "Contextual retrieval from inspection manuals and historical data","LLM-based response generation for field support"]
+                rag: ["RAG based chatbot for inspection guidance and troubleshooting", "Contextual retrieval from inspection manuals and historical data", "LLM-based response generation for field support"]
             },
             approach: [
                 "Built a robust bi-directional sync engine using IndexedDB to track local changes and resolve conflicts using timestamps.",
@@ -508,7 +508,7 @@ const PROJECTS = [
             "Responsive, mobile-first technical layout"
         ],
         challenges: "Orchestrating complex shared-element transitions between grid and detail views while managing scroll state and data persistence across the modal lifecycle.",
-        links: { code: "https://github.com/SahilChukka19/My-Portfolio"},
+        links: { code: "https://github.com/SahilChukka19/My-Portfolio" },
         images: [
             "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=800",
             "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800"
@@ -534,6 +534,30 @@ const Projects = () => {
         return PROJECTS.find(p => p.id === selectedId);
     }, [selectedId]);
 
+    const openedFromGridId = useRef(null);
+
+    const openProject = (id) => {
+        openedFromGridId.current = id;
+        setSelectedId(id);
+        const el = document.getElementById("projects");
+        if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+    };
+
+    // Switch between projects from inside the detail view — does NOT change the originating card
+    const switchProject = (id) => {
+        setSelectedId(id);
+    };
+
+    const closeProject = () => {
+        const originId = openedFromGridId.current;
+        setSelectedId(null);
+        // Wait for grid to fully re-render and layout to settle, then scroll to the original card
+        setTimeout(() => {
+            const card = document.querySelector(`[data-project-id="${originId}"]`);
+            if (card) card.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 400);
+    };
+
     // Grid View Component
     const GridView = () => (
         <div className="max-w-7xl mx-auto">
@@ -542,7 +566,7 @@ const Projects = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 className="text-center mb-16"
             >
-                <h2 className="text-5xl md:text-7xl font-black text-white uppercase italic tracking-tighter mb-4">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white uppercase italic tracking-tighter mb-4 px-4 sm:px-0">
                     Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Projects</span>
                 </h2>
                 <div className="w-24 h-1 bg-gradient-to-r from-emerald-500 to-cyan-500 mx-auto mb-6" />
@@ -579,10 +603,11 @@ const Projects = () => {
                         <motion.div
                             layoutId={`project-container-${project.id}`}
                             key={project.id}
+                            data-project-id={project.id}
                             initial={{ opacity: 0, scale: 0.9 }}
                             animate={{ opacity: 1, scale: 1 }}
                             exit={{ opacity: 0, scale: 0.9 }}
-                            onClick={() => setSelectedId(project.id)}
+                            onClick={() => openProject(project.id)}
                             className="group relative bg-slate-900/40 border border-slate-800/50 rounded-2xl overflow-hidden hover:border-cyan-500/50 hover:shadow-[0_0_30px_rgba(6,182,212,0.1)] transition-all cursor-pointer backdrop-blur-sm"
                         >
                             <div className={`h-1.5 w-full bg-gradient-to-r ${project.color}`} />
@@ -638,16 +663,16 @@ const Projects = () => {
 
     // Detail View Component
     const DetailView = () => (
-        <div className="max-w-[1500px] mx-auto h-[85vh] flex gap-8">
+        <div className="max-w-[1500px] mx-auto lg:h-[85vh] flex flex-col lg:flex-row gap-8">
             {/* Left Sidebar Nav */}
             <motion.div
                 initial={{ x: -20, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
-                className="w-80 flex flex-col gap-3 overflow-y-auto pr-4 scrollbar-hide"
+                className="hidden lg:flex w-80 flex-col gap-3 overflow-y-auto pr-4 scrollbar-hide"
             >
                 <div className="mb-6">
                     <button
-                        onClick={() => setSelectedId(null)}
+                        onClick={() => closeProject()}
                         className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors uppercase text-xs font-bold font-mono py-2"
                     >
                         <ArrowLeft className="w-4 h-4" /> Return to Grid
@@ -658,7 +683,7 @@ const Projects = () => {
                 {filteredProjects.map((p) => (
                     <motion.div
                         key={p.id}
-                        onClick={() => setSelectedId(p.id)}
+                        onClick={() => switchProject(p.id)}
                         className={`p-4 rounded-xl border transition-all cursor-pointer flex items-center gap-4 group ${p.id === selectedId
                             ? "bg-cyan-500/10 border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.1)]"
                             : "bg-slate-900/30 border-slate-800 hover:border-slate-700 hover:bg-slate-900/50"
@@ -684,10 +709,20 @@ const Projects = () => {
                 ))}
             </motion.div>
 
+            {/* Mobile Return Link */}
+            <div className="lg:hidden mb-4">
+                <button
+                    onClick={() => closeProject()}
+                    className="flex items-center gap-2 text-cyan-500 uppercase text-xs font-bold font-mono py-2"
+                >
+                    <ArrowLeft className="w-4 h-4" /> Back to projects
+                </button>
+            </div>
+
             {/* Main Content Area */}
             <motion.div
                 layoutId={`project-container-${selectedId}`}
-                className="flex-1 bg-slate-900/40 border border-slate-800/50 rounded-3xl overflow-hidden backdrop-blur-md flex flex-col"
+                className="flex-1 bg-slate-900/40 border border-slate-800/50 rounded-2xl lg:rounded-3xl overflow-hidden backdrop-blur-md flex flex-col"
             >
                 <div className={`h-2 w-full bg-gradient-to-r ${activeProject.color}`} />
 
@@ -705,10 +740,10 @@ const Projects = () => {
                                     {activeProject.category === "BI" && <BarChart3 className="w-8 h-8" />}
                                 </motion.div>
                                 <div>
-                                    <span className="text-xs font-mono text-cyan-500 uppercase tracking-tighter">Project Study // 2024</span>
+                                    <span className="text-[10px] font-mono text-cyan-500 uppercase tracking-tighter">Project Study // 2024</span>
                                     <motion.h3
                                         layoutId={`project-title-${selectedId}`}
-                                        className="text-4xl font-black text-white uppercase italic tracking-tight"
+                                        className="text-2xl sm:text-3xl md:text-4xl font-black text-white uppercase italic tracking-tight"
                                     >
                                         {activeProject.title}
                                     </motion.h3>

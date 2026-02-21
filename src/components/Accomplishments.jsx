@@ -10,7 +10,7 @@ const ACCOMPLISHMENTS = [
         desc: "Published research on CNN architectures for medical OCT image analysis.",
         icon: BookOpen,
         color: "from-cyan-500 to-blue-500",
-        link: "https://www.mecs-press.org/ijigsp/ijigsp-v17-n4/v17n4-7.html", 
+        link: "https://www.mecs-press.org/ijigsp/ijigsp-v17-n4/v17n4-7.html",
         yOffset: "lg:-translate-y-12"
     },
     {
@@ -20,7 +20,7 @@ const ACCOMPLISHMENTS = [
         desc: "ROC Registration for intellectual property in medical diagnostic software.",
         icon: ShieldCheck,
         color: "from-emerald-500 to-teal-500",
-        link: "https://copyright.gov.in/SearchRoc.aspx", 
+        link: "https://copyright.gov.in/SearchRoc.aspx",
         yOffset: "lg:translate-y-12"
     },
     {
@@ -40,7 +40,7 @@ const ACCOMPLISHMENTS = [
         desc: "Advanced certification in LangChain, RAG pipelines, and Hugging Face.",
         icon: GraduationCap,
         color: "from-emerald-400 to-cyan-400",
-        link: "https://www.udemy.com/certificate/UC-7da8a79b-d7ff-475d-99bf-124c267ccfed/", 
+        link: "https://www.udemy.com/certificate/UC-7da8a79b-d7ff-475d-99bf-124c267ccfed/",
         yOffset: "lg:translate-y-12"
     },
 ];
@@ -71,7 +71,7 @@ const Accomplishments = () => {
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        className="text-5xl md:text-7xl font-black text-white uppercase italic tracking-tighter"
+                        className="text-4xl sm:text-5xl md:text-7xl font-black text-white uppercase italic tracking-tighter"
                     >
                         Hall of <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Excellence</span>
                     </motion.h2>
@@ -92,7 +92,7 @@ const Accomplishments = () => {
                             </div>
 
                             <div className="flex flex-col items-center mb-8 relative">
-                                <div className="text-6xl font-black text-slate-800/50 absolute -top-20 left-1/2 -translate-x-1/2 select-none group-hover:text-cyan-500/20 transition-colors duration-500 font-mono italic">
+                                <div className="hidden lg:block text-6xl font-black text-slate-800/50 absolute -top-20 left-1/2 -translate-x-1/2 select-none group-hover:text-cyan-500/20 transition-colors duration-500 font-mono italic">
                                     {item.id}
                                 </div>
 

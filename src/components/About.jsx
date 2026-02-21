@@ -6,8 +6,8 @@ const About = () => {
     const [activeQuestion, setActiveQuestion] = useState(null);
 
     const STATS = [
-        { label: "Role", value: "AI/ML Engineer, Web Developer" },
-        { label: "Team", value: "TPF / Freelance" },
+        { label: "Role", value: "AI/ML Engineer, Web Developer, BI Executive" },
+        { label: "Team", value: "TPFEPL" },
         { label: "Base", value: "India" },
         { label: "Exp", value: "10 Months" },
     ];
@@ -48,7 +48,7 @@ const About = () => {
     ];
 
     return (
-        <section id="about" className="min-h-screen pt-10 pb-20 px-6 max-w-7xl mx-auto flex flex-col justify-center relative">
+        <section id="about" className="min-h-screen pt-10 pb-10 px-6 max-w-7xl mx-auto flex flex-col justify-center relative">
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -59,24 +59,24 @@ const About = () => {
                     <User className="w-8 h-8 text-cyan-500" />
                     <span className="text-sm font-mono text-cyan-500 tracking-widest uppercase">Driver Profile</span>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-black text-white uppercase italic tracking-tighter">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white uppercase italic tracking-tighter">
                     About <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-emerald-500">Me</span>
                 </h2>
             </motion.div>
 
-            <div className="grid md:grid-cols-12 gap-8 items-start">
+            <div className="grid lg:grid-cols-12 gap-8 items-start">
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="md:col-span-4"
+                    className="lg:col-span-4"
                 >
                     <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-6 backdrop-blur-sm relative overflow-hidden group flex flex-col">
                         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 via-transparent to-emerald-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                         <div className="relative w-full aspect-[3/4] rounded-xl overflow-hidden bg-slate-800 mb-6 border-2 border-slate-700 group-hover:border-cyan-500/50 transition-colors">
                             <img
-                                src="/me.jpg"
+                                src="/icons/me.jpg"
                                 alt="Sahil Chukka"
                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
                             />
@@ -100,7 +100,7 @@ const About = () => {
                     </div>
                 </motion.div>
 
-                <div className="md:col-span-8 flex flex-col gap-8">
+                <div className="lg:col-span-8 flex flex-col gap-8">
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -185,7 +185,7 @@ const About = () => {
                                     </div>
                                     <div className="flex items-center gap-4">
                                         <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                            <img src="/imagine_dragons.svg" alt="Radioactive Remix" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                                            <img src="/icons/imagine_dragons.svg" alt="Radioactive Remix" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                                             <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                                                 <div className="w-8 h-8 bg-gradient-to-r from-cyan-600 to-emerald-600 rounded-full flex items-center justify-center shadow-lg transform scale-0 group-hover:scale-100 transition-transform delay-75">
                                                     <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-white border-b-[5px] border-b-transparent ml-1" />

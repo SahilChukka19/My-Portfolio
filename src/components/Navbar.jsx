@@ -12,7 +12,7 @@ const Navbar = () => {
         { id: "skills", label: "Skills", icon: Lightbulb, href: "#skills" },
         { id: "projects", label: "Projects", icon: Briefcase, href: "#projects" },
         { id: "accomplishments", label: "Awards", icon: Award, href: "#accomplishments" },
-        { id: "resume", label: "Resume", icon: FileText, href: "/SahilChukkaResume.pdf", external: true, download: true },
+        { id: "resume", label: "Resume", icon: FileText, href: "/resume/SahilChukkaResume.pdf", external: true, download: true },
         { id: "contact", label: "Contact", icon: Mail, href: "#contact" },
     ];
 
@@ -30,7 +30,7 @@ const Navbar = () => {
                 })
                 .filter(section => section.element);
 
-            const scrollPosition = window.scrollY + 100; 
+            const scrollPosition = window.scrollY + 100;
 
             const currentSection = sections.find(section => {
                 const { offsetTop, offsetHeight } = section.element;
@@ -54,8 +54,8 @@ const Navbar = () => {
     }, []);
 
     return (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 max-w-fit">
-            <nav className="flex items-center gap-1 bg-slate-900/80 backdrop-blur-md border border-cyan-500/20 rounded-full p-1 shadow-lg shadow-cyan-500/10">
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 max-w-[95vw] md:max-w-fit">
+            <nav className="flex items-center gap-0.5 md:gap-1 bg-slate-900/80 backdrop-blur-md border border-cyan-500/20 rounded-full p-1 shadow-lg shadow-cyan-500/10">
                 {tabs.map((tab) => {
                     const isActive = activeTab === tab.label;
                     return (
@@ -66,7 +66,7 @@ const Navbar = () => {
                             target={tab.external && !tab.download ? "_blank" : undefined}
                             rel={tab.external ? "noopener noreferrer" : undefined}
                             download={tab.download ? "Sahil_Resume.pdf" : undefined}
-                            className={`relative flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${isActive ? "text-white" : "text-gray-400 hover:text-white"
+                            className={`relative flex items-center gap-2 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${isActive ? "text-white" : "text-gray-400 hover:text-white"
                                 }`}
                         >
                             {isActive && (
@@ -77,7 +77,7 @@ const Navbar = () => {
                                 />
                             )}
                             <tab.icon className={`w-4 h-4 relative z-10 ${isActive ? "text-white" : ""}`} />
-                            <span className="relative z-10 hidden md:inline">{tab.label}</span>
+                            <span className="relative z-10 hidden lg:inline">{tab.label}</span>
                         </a>
                     );
                 })}

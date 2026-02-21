@@ -36,7 +36,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
+                    className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight"
                 >
                     Engineering Data-Driven <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Intelligence</span>
                 </motion.h1>
@@ -54,12 +54,12 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
-                    className="flex justify-center gap-4"
+                    className="flex flex-col sm:flex-row justify-center gap-4 px-6 sm:px-0"
                 >
-                    <a href="#projects" className="px-8 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold hover:shadow-lg hover:shadow-cyan-500/25 transition-all">
+                    <a href="#projects" className="px-8 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold hover:shadow-lg hover:shadow-cyan-500/25 transition-all text-center">
                         View My Work
                     </a>
-                    <a href="#contact" className="px-8 py-3 rounded-full border border-gray-700 hover:border-cyan-400 hover:text-cyan-400 transition-all">
+                    <a href="#contact" className="px-8 py-3 rounded-full border border-gray-700 hover:border-cyan-400 hover:text-cyan-400 transition-all text-center">
                         Contact Me
                     </a>
                 </motion.div>

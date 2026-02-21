@@ -5,12 +5,12 @@ import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const form = useRef();
-    const [status, setStatus] = useState('idle'); 
+    const [status, setStatus] = useState('idle');
 
     const sendEmail = (e) => {
         e.preventDefault();
 
-       
+
         if (!form.current.user_name.value || !form.current.user_email.value || !form.current.message.value) {
             alert("Please fill in all required fields.");
             return;
@@ -50,7 +50,7 @@ const Contact = () => {
                     <MessageSquare className="w-8 h-8 text-cyan-500" />
                     <span className="text-sm font-mono text-cyan-500 tracking-widest uppercase">Connectivity</span>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-black text-white uppercase italic tracking-tighter">
+                <h2 className="text-4xl sm:text-5xl md:text-7xl font-black text-white uppercase italic tracking-tighter">
                     Get In <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-emerald-500">Touch</span>
                 </h2>
                 <p className="text-slate-400 mt-4 max-w-xl font-light leading-relaxed">
@@ -58,12 +58,12 @@ const Contact = () => {
                 </p>
             </motion.div>
 
-            <div className="grid lg:grid-cols-12 gap-12">
+            <div className="grid md:grid-cols-12 gap-12">
                 <motion.div
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="lg:col-span-5 space-y-8"
+                    className="md:col-span-5 lg:col-span-5 space-y-8"
                 >
                     <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 backdrop-blur-sm space-y-8">
                         <div>
@@ -127,7 +127,7 @@ const Contact = () => {
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="lg:col-span-7 relative"
+                    className="md:col-span-7 lg:col-span-7 relative"
                 >
                     <AnimatePresence>
                         {status === 'success' && (

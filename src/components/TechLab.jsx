@@ -1,32 +1,30 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-    Atom, Database, Server, Code,
-    Cpu, Globe, Layers, Box, Terminal,
-    Sparkles, RefreshCw, FlaskConical, Workflow, Bot, Users, Brain, Hexagon, Code2, Wifi, Mail
+    Terminal, Sparkles, RefreshCw, FlaskConical
 } from "lucide-react";
 
 const SKILLS = [
-    { id: "python", name: "Python", icon: Code, color: "text-yellow-400" },
-    { id: "typescript", name: "TypeScript", icon: Box, color: "text-blue-500" },
-    { id: "react", name: "React", icon: Atom, color: "text-cyan-400" },
-    { id: "fastapi", name: "FastAPI", icon: Sparkles, color: "text-teal-400" },
-    { id: "pytorch", name: "PyTorch", icon: Cpu, color: "text-orange-500" },
-    { id: "sql", name: "SQL", icon: Database, color: "text-gray-300" },
-    { id: "azure", name: "Azure", icon: Globe, color: "text-blue-400" },
-    { id: "langchain", name: "LangChain", icon: Terminal, color: "text-green-400" },
-    { id: "bi", name: "Power BI", icon: Layers, color: "text-yellow-500" },
-    { id: "rag", name: "RAG", icon: Database, color: "text-purple-400" },
-    { id: "rest", name: "REST API", icon: Globe, color: "text-indigo-400" },
-    { id: "git", name: "Git", icon: Server, color: "text-red-400" },
-    { id: "scikit", name: "Scikit-Learn", icon: FlaskConical, color: "text-orange-300" },
-    { id: "javascript", name: "JavaScript", icon: Code2, color: "text-yellow-300" },
-    { id: "flask", name: "Flask", icon: FlaskConical, color: "text-gray-400" },
-    { id: "crewai", name: "CrewAI", icon: Users, color: "text-red-500" },
-    { id: "huggingface", name: "Hugging Face", icon: Brain, color: "text-yellow-600" },
-    { id: "keras", name: "Keras", icon: Hexagon, color: "text-red-600" },
-    { id: "pwa", name: "PWA", icon: Wifi, color: "text-purple-500" },
-    { id: "postman", name: "Postman", icon: Mail, color: "text-orange-500" },
+    { id: "python", name: "Python", icon: "/icons/python.svg", color: "text-yellow-400" },
+    { id: "typescript", name: "TypeScript", icon: "/icons/ts.svg", color: "text-blue-500" },
+    { id: "react", name: "React", icon: "/icons/react.svg", color: "text-cyan-400" },
+    { id: "fastapi", name: "FastAPI", icon: "/icons/fastapi.svg", color: "text-teal-400" },
+    { id: "pytorch", name: "PyTorch", icon: "/icons/pytorch.svg", color: "text-orange-500" },
+    { id: "sql", name: "SQL", icon: "/icons/sql.svg", color: "text-gray-300" },
+    { id: "azure", name: "Azure", icon: "/icons/Azure.svg", color: "text-blue-400" },
+    { id: "langchain", name: "LangChain", icon: "/icons/langchain.svg", color: "text-green-400" },
+    { id: "bi", name: "Power BI", icon: "/icons/powerbi.svg", color: "text-yellow-500" },
+    { id: "rag", name: "RAG", icon: "/icons/rag.svg", color: "text-purple-400" },
+    { id: "rest", name: "REST API", icon: "/icons/restapi.svg", color: "text-indigo-400" },
+    { id: "git", name: "Git", icon: "/icons/git.svg", color: "text-red-400" },
+    { id: "scikit", name: "Scikit-Learn", icon: "/icons/scikitlearn.svg", color: "text-orange-300" },
+    { id: "javascript", name: "JavaScript", icon: "/icons/js.svg", color: "text-yellow-300" },
+    { id: "flask", name: "Flask", icon: "/icons/flask.svg", color: "text-gray-400" },
+    { id: "crewai", name: "CrewAI", icon: "/icons/crewai.svg", color: "text-red-500" },
+    { id: "huggingface", name: "Hugging Face", icon: "/icons/huggingface.svg", color: "text-yellow-600" },
+    { id: "keras", name: "Keras", icon: "/icons/keras.svg", color: "text-red-600" },
+    { id: "pwa", name: "PWA", icon: "/icons/pwa.svg", color: "text-purple-500" },
+    { id: "postman", name: "Postman", icon: "/icons/postman.svg", color: "text-orange-500" },
 ];
 
 const RECIPES = {
@@ -89,7 +87,7 @@ const TechLab = () => {
     }, [slot1, slot2]);
 
     const handleSelect = (skill) => {
-        if (result) handleReset(); 
+        if (result) handleReset();
         if (!slot1) setSlot1(skill);
         else if (!slot2) setSlot2(skill);
     };
@@ -102,7 +100,7 @@ const TechLab = () => {
     };
 
     return (
-        <section id="skills" className="min-h-screen bg-slate-950 py-20 px-6 relative overflow-hidden flex flex-col justify-center">
+        <section id="skills" className="min-h-screen bg-slate-950 py-32 px-6 relative overflow-hidden flex flex-col justify-center">
             <div className="absolute top-20 left-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
 
@@ -118,14 +116,14 @@ const TechLab = () => {
                     <p className="text-gray-400 text-lg">Combine my skills to discover my specialized roles.</p>
                 </motion.div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 items-start">
 
                     {/* INVENTORY SIDEBAR */}
-                    <div className="lg:col-span-4 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-xl">
+                    <div className="md:col-span-2 lg:col-span-4 bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 shadow-xl">
                         <h3 className="text-xl font-mono text-cyan-300 mb-6 flex items-center gap-2">
                             <Terminal className="w-5 h-5" /> Inventory
                         </h3>
-                        <div className="grid grid-cols-4 gap-4">
+                        <div className="grid grid-cols-3 sm:grid-cols-4 gap-3 md:gap-4">
                             {SKILLS.map((skill) => (
                                 <motion.button
                                     key={skill.id}
@@ -133,25 +131,27 @@ const TechLab = () => {
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => handleSelect(skill)}
                                     disabled={slot1?.id === skill.id || slot2?.id === skill.id}
-                                    className={`aspect-square rounded-xl bg-slate-800 flex flex-col items-center justify-center gap-2 border border-slate-700 transition-all ${(slot1?.id === skill.id || slot2?.id === skill.id) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.15)]'
+                                    className={`aspect-square rounded-xl bg-slate-800 flex flex-col items-center justify-center p-2 border border-slate-700 transition-all ${(slot1?.id === skill.id || slot2?.id === skill.id) ? 'opacity-30 cursor-not-allowed' : 'cursor-pointer hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.15)]'
                                         }`}
                                 >
-                                    <skill.icon className={`w-8 h-8 ${skill.color}`} />
-                                    <span className="text-xs font-medium text-gray-300">{skill.name}</span>
+                                    <div className="flex flex-col items-center justify-center gap-1">
+                                        <img src={skill.icon} alt={skill.name} className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
+                                        <span className="text-[10px] sm:text-xs font-medium text-gray-300 text-center leading-tight break-words w-full px-1 line-clamp-2">{skill.name}</span>
+                                    </div>
                                 </motion.button>
                             ))}
                         </div>
                     </div>
 
                     {/* WORKBENCH AREA */}
-                    <div className="lg:col-span-8 flex flex-col items-center justify-center min-h-[400px]">
+                    <div className="md:col-span-2 lg:col-span-8 flex flex-col items-center justify-center min-h-[400px]">
 
                         {/* THE SLOTS */}
-                        <div className="flex items-center gap-4 md:gap-8 mb-12">
+                        <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-12">
                             {/* Slot 1 */}
                             <SlotBox skill={slot1} label="Input A" onClear={() => setSlot1(null)} />
 
-                            <div className="text-4xl text-slate-700 font-light">+</div>
+                            <div className="text-4xl text-slate-700 font-light md:rotate-0 rotate-90">+</div>
 
                             {/* Slot 2 */}
                             <SlotBox skill={slot2} label="Input B" onClear={() => setSlot2(null)} />
@@ -232,7 +232,7 @@ const SlotBox = ({ skill, label, onClear }) => {
             >
                 {skill ? (
                     <>
-                        <skill.icon className={`w-10 h-10 md:w-12 md:h-12 ${skill.color}`} />
+                        <img src={skill.icon} alt={skill.name} className="w-10 h-10 md:w-12 md:h-12 object-contain" />
                         <span className="text-xs md:text-sm font-semibold text-white">{skill.name}</span>
                         {/* Clear Button */}
                         <button
