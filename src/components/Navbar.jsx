@@ -1,88 +1,91 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Home, User, Lightbulb, Briefcase, Mail, FileText, Flag, Award } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-    const [activeTab, setActiveTab] = useState("Home");
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     const tabs = [
-        { id: "home", label: "Home", icon: Home, href: "#" },
-        { id: "about", label: "About", icon: User, href: "#about" },
-        { id: "experience", label: "Experience", icon: Flag, href: "#experience" },
-        { id: "skills", label: "Skills", icon: Lightbulb, href: "#skills" },
-        { id: "projects", label: "Projects", icon: Briefcase, href: "#projects" },
-        { id: "accomplishments", label: "Awards", icon: Award, href: "#accomplishments" },
-        { id: "resume", label: "Resume", icon: FileText, href: "/resume/SahilChukkaResume.pdf", external: true, download: true },
-        { id: "contact", label: "Contact", icon: Mail, href: "#contact" },
+        { id: "home", label: "Home", href: "#" },
+        { id: "about", label: "About", href: "#about" },
+        { id: "experience", label: "Experience", href: "#experience" },
+        { id: "skills", label: "Skills", href: "#skills" },
+        { id: "projects", label: "Projects", href: "#projects" },
+        { id: "awards", label: "Awards", href: "#awards" },
+        { id: "resume", label: "Resume", href: "/resume/SahilChukkaResume.pdf", external: true, download: true },
+        { id: "contact", label: "Contact", href: "#contact" },
     ];
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = tabs
-                .filter(tab => !tab.external && tab.href.startsWith("#"))
-                .map(tab => {
-                    const id = tab.href === "#" ? "home" : tab.href.substring(1);
-                    return {
-                        id: tab.label,
-                        href: tab.href,
-                        element: document.getElementById(id)
-                    };
-                })
-                .filter(section => section.element);
-
-            const scrollPosition = window.scrollY + 100;
-
-            const currentSection = sections.find(section => {
-                const { offsetTop, offsetHeight } = section.element;
-                return scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight;
-            });
-
-            if (currentSection) {
-                setActiveTab(currentSection.id);
-
-                const newHash = currentSection.href === "#" ? "#home" : currentSection.href;
-                if (window.location.hash !== newHash && !window.location.hash.includes("?")) {
-                    window.history.replaceState(null, null, newHash);
-                }
-            }
+            setIsScrolled(window.scrollY > 50);
         };
-
         window.addEventListener("scroll", handleScroll);
-        handleScroll();
-
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     return (
-        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 max-w-[95vw] md:max-w-fit">
-            <nav className="flex items-center gap-0.5 md:gap-1 bg-slate-900/80 backdrop-blur-md border border-cyan-500/20 rounded-full p-1 shadow-lg shadow-cyan-500/10">
-                {tabs.map((tab) => {
-                    const isActive = activeTab === tab.label;
-                    return (
+        <header className={`fixed top-0 left-0 right-0 z-40 transition-colors duration-300 ${isScrolled ? 'bg-[var(--color-surface)]/90 backdrop-blur-md border-b border-[var(--color-border-subtle)]' : 'bg-transparent'}`}>
+            <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+                <a href="#" className="font-display font-bold text-xl tracking-tight text-[var(--color-text-primary)] hover:text-[var(--color-accent-navy)] transition-colors">
+                    SC.
+                </a>
+
+                {/* Desktop Nav */}
+                <nav className="hidden md:flex items-center gap-8">
+                    {tabs.map((tab) => (
                         <a
                             key={tab.id}
                             href={tab.href}
-                            onClick={() => !tab.external && setActiveTab(tab.label)}
                             target={tab.external && !tab.download ? "_blank" : undefined}
                             rel={tab.external ? "noopener noreferrer" : undefined}
                             download={tab.download ? "Sahil_Resume.pdf" : undefined}
-                            className={`relative flex items-center gap-2 px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-colors ${isActive ? "text-white" : "text-gray-400 hover:text-white"
-                                }`}
+                            className="text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover-underline pb-1 transition-colors"
                         >
-                            {isActive && (
-                                <motion.div
-                                    layoutId="active-pill"
-                                    className="absolute inset-0 bg-gradient-to-r from-cyan-600 to-emerald-600 rounded-full"
-                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                                />
-                            )}
-                            <tab.icon className={`w-4 h-4 relative z-10 ${isActive ? "text-white" : ""}`} />
-                            <span className="relative z-10 hidden lg:inline">{tab.label}</span>
+                            {tab.label}
                         </a>
-                    );
-                })}
-            </nav>
-        </div>
+                    ))}
+                </nav>
+
+                {/* Mobile Toggle */}
+                <button 
+                    className="md:hidden text-[var(--color-text-primary)] p-2"
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                >
+                    {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                </button>
+            </div>
+
+            {/* Mobile Nav */}
+            <AnimatePresence>
+                {mobileMenuOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -20 }}
+                        transition={{ duration: 0.2, ease: "easeOut" }}
+                        className="absolute top-20 left-0 right-0 bg-[var(--color-surface)] border-b border-[var(--color-border-subtle)] shadow-xl md:hidden"
+                    >
+                        <nav className="flex flex-col px-6 py-4 gap-4">
+                            {tabs.map((tab) => (
+                                <a
+                                    key={tab.id}
+                                    href={tab.href}
+                                    target={tab.external && !tab.download ? "_blank" : undefined}
+                                    rel={tab.external ? "noopener noreferrer" : undefined}
+                                    download={tab.download ? "Sahil_Resume.pdf" : undefined}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="text-lg font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-accent-navy)] transition-colors w-fit"
+                                >
+                                    {tab.label}
+                                </a>
+                            ))}
+                        </nav>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </header>
     );
 };
 
